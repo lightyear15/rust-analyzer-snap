@@ -18,6 +18,7 @@ parts:
             - cargo
             - rust-src
             - zlib1g
+            - libgcrypt20
 
 apps:
     rust-analyzer:
