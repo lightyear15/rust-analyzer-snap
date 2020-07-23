@@ -17,9 +17,11 @@ parts:
         stage-packages:
             - cargo
             - rust-src
+            - zlib1g
 
 apps:
     rust-analyzer:
         command: ./bin/rust-analyzer
         plugs:
             - home
+            - network
