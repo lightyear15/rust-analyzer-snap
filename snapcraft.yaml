@@ -19,6 +19,7 @@ parts:
             - rust-src
             - zlib1g
             - libgcrypt20
+            - libgpg-error0
 
 apps:
     rust-analyzer:
