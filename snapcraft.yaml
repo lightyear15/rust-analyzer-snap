@@ -1,6 +1,6 @@
 name: rust-analyzer
 base: core18
-version: git
+adopt-info: rust-analyzer
 architectures: [amd64, i386]
 summary: An experimental Rust compiler front-end for IDEs 
 description: |
@@ -14,6 +14,7 @@ parts:
         source: https://github.com/rust-analyzer/rust-analyzer.git
         build-packages:
             - gcc-multilib
+            - python-setuptools
         stage-packages:
             - cargo
             - rust-src
@@ -21,6 +22,9 @@ parts:
             - libgcrypt20
             - libgpg-error0
             - libstdc++6
+        override-pull: |
+            snapcraftctl pull
+            snapcraftctl set-version "$(git describe --tags --always)"
 
 apps:
     rust-analyzer:
