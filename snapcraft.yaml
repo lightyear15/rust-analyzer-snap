@@ -22,6 +22,7 @@ parts:
             - libgcrypt20
             - libgpg-error0
             - libstdc++6
+            - libpcre3
         override-pull: |
             snapcraftctl pull
             snapcraftctl set-version "$(git describe --tags --always)"
@@ -31,4 +32,4 @@ apps:
         command: ./bin/rust-analyzer
         plugs:
             - home
-            - network
+            #- network
