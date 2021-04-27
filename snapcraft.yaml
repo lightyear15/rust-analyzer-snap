@@ -1,41 +1,31 @@
 name: rust-analyzer
-base: core20
+base: core18
 adopt-info: rust-analyzer
 architectures: [amd64, i386]
 summary: An experimental Rust compiler front-end for IDEs 
 description: |
     rust-analyzer is an experimental modular compiler frontend for the Rust language. It is a part of a larger rls-2.0 effort to create excellent IDE support for Rust.
-grade: devel 
+grade: stable 
 confinement: strict 
 
 parts:
     rust-analyzer:
         plugin: rust
         source: https://github.com/rust-analyzer/rust-analyzer.git
-        rust-path: ["xtask"]
         build-packages:
             - gcc-multilib
             - python-setuptools
-        override-build: |
-            snapcraftctl build
-            cargo xtask install --server
-            mv target/release/rust-analyzer $SNAPCRAFT_PART_INSTALL/bin
         stage-packages:
+            - cargo
+            - rust-src
             - zlib1g
             - libgcrypt20
             - libgpg-error0
             - libstdc++6
             - libpcre3
-            - cargo
-            - rust-src
-        override-stage: |
-            snapcraftctl stage
-            apt-get autoremove --yes
-            apt-get reinstall rust-src
         override-pull: |
             snapcraftctl pull
             snapcraftctl set-version "$(git describe --tags --always)"
-
 
 apps:
     rust-analyzer:
