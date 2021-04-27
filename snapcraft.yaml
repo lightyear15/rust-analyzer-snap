@@ -29,7 +29,7 @@ parts:
 
 apps:
     rust-analyzer:
-        command: ./bin/rust-analyzer --no-sysroot
+        command: ./bin/rust-analyzer
         plugs:
             - home
             - network
