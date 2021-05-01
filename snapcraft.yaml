@@ -28,14 +28,14 @@ parts:
             snapcraftctl set-version "$(git describe --tags --always)"
 
 plugs:
-    dot-cargo-config:
+    dot-cargo:
         interface: personal-files
         read: 
-            - $HOME/.cargo/config
+        - $HOME/.cargo
 apps:
     rust-analyzer:
         command: ./bin/rust-analyzer
         plugs:
             - home
             - network
-            - dot-cargo-config
+            - dot-cargo
