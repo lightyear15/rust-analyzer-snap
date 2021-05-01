@@ -27,9 +27,15 @@ parts:
             snapcraftctl pull
             snapcraftctl set-version "$(git describe --tags --always)"
 
+plugs:
+    dot-cargo-config:
+        interface: personal-files
+        read: 
+            - $HOME/.cargo/config
 apps:
     rust-analyzer:
         command: ./bin/rust-analyzer
         plugs:
             - home
             - network
+            - dot-cargo-config
