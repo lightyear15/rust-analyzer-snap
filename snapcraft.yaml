@@ -23,6 +23,7 @@ parts:
             - libgpg-error0
             - libstdc++6
             - libpcre3
+            - build-essential
         override-pull: |
             snapcraftctl pull
             git fetch origin --tags
